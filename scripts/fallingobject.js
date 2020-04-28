@@ -8,7 +8,7 @@ class FallingObject {
     this.width = 50;
     this.height = 50;
     this.speedY = 50;  
-    this.gravity = 1.5;
+    this.gravity = 1.2;
     this.objectImage = new Image();
     this.objectImage.src = '/images/poo_scared.jpg';
     this.fallingObjects = this.game.fallingObjects
@@ -49,11 +49,9 @@ class FallingObject {
     && (this.x + (this.width / 2)) >= this.game.loo.x ) {
       
       // win a point
-      this.game.score++;
-      console.log('you caught the poo!');
+      //this.game.score++;
+      //console.log('you caught the poo!');
       return true;
-      //remove last element of object array
-      //this.fallingObjects.pop();
     }
     
   }
@@ -62,8 +60,8 @@ class FallingObject {
     //botttom of object hits the ground
     if ((this.y + this.height) >= this.game.$canvas.height) {
       // lose a point
-      this.game.score--;
-      console.log('SPLAT!');
+      //this.game.score--;
+      //console.log('SPLAT!');
       return true;
       //remove last element of object array
       //this.fallingObjects.pop();

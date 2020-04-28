@@ -3,9 +3,11 @@ the Poo2loo game
 starting page
 - Objective : catch the poo in the loo
 - keys : left and right (up & down)
-( - avoid obstacles)
 
-- start button 
+
+- start button
+- reset button 
+- pause button
 
 IMAGES
 - img : static background for entire page
@@ -50,8 +52,14 @@ speed up poo with timer
 
 --increase the frequency of the loop without creating too many objects
 
-- poo2loo points counted double
-- once a poo hits the ground can no longer score + points (only -)
+--tweak collision when poo has reached beyond top of loo but not yet hit the ground » not counted as caught
+
+--make sure GameOver when score <= 0 without affecting game start
+
+--
+
+
+
 
 
 

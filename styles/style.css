@@ -10,8 +10,43 @@ body {
 
 .arrows-img {
   width: 150px;
+  margin-bottom: 75px;
 }
 
-#start-button {
+.button {
+  height: 80px;
+  box-shadow: 2px 2px 5px #000; 
+  padding: 18px;
+  margin: 0 auto;
   font-size: 25px;
 }
+
+#start {
+  background-color: greenyellow;
+}
+
+#pause {
+  background-color: grey;
+}
+
+#reset {
+  background-color: red;
+}
+
+h3, 
+p {
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+h1 {
+  color: brown;
+  text-shadow: 0px 0px 4px lightblue;
+  font-size: 3.5em; 
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+

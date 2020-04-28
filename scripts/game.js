@@ -5,16 +5,34 @@ class Game {
     this.context = $canvas.getContext('2d');
     this.setKeyBindings();
     this.background = new Background(this);
-    this.fallingObjects = [];
-    this.loo = new Loo(this);
     this.scoreBoard = new ScoreBoard(this);
+    this.reset();
   }
-
-  start () {
+  
+  start() {
     //this.createFallingObjects();
     // Loop
-    this.score = 0;
+    this.gameIsPlaying = true;
+    //this.score = 0;
     this.loop();
+  }
+  
+  pause() {
+    this.gameIsPlaying = false;
+  }
+  
+  reset() {
+    this.fallingObjects = [];
+    this.loo = new Loo(this);
+    this.score = 0;
+
+  }
+
+  gameOver() {
+    this.gameIsPlaying = false;
+    setTimeout(() => {
+      this.reset();
+    }, 2000)
   }
 
   setKeyBindings() {
@@ -56,18 +74,28 @@ class Game {
     
   }
 
-  removeObjects() {
-    const ObjectArray = this.fallingObjects
+  addScoreAndRemoveObjects() {
+    const ObjectArray = this.fallingObjects;
+    
     for (let i = 0; i < ObjectArray.length - 1; i++) {
-      if (ObjectArray[i].checkCollisionLoo()) {
+      const collidedLoo = ObjectArray[i].checkCollisionLoo();
+      if (collidedLoo) {
         ObjectArray.splice(i, 1);
-        console.log(`${i} was spliced`);
+        // win a point
+        this.score++;
+        console.log('you caught the poo! add 1 point');
+        //console.log(`i ${i} was removed`);
       }
-      if (ObjectArray[i].checkCollisionGround()) {
-        ObjectArray.splice(i, 1);
-        console.log(`${i} was spliced`);
+    }
+    for (let j = 0; j < ObjectArray.length - 1; j++) {
+      const collidedFloor = ObjectArray[j].checkCollisionGround();
+      if (collidedFloor) {
+        // lose a point
+        this.score--;
+        ObjectArray.splice(j, 1);
+        console.log('SPLAT! poo hit the ground. remove 1 point');
+        //console.log(`j ${j} was removed`);
       }
-
       
     };
   }
@@ -83,8 +111,11 @@ class Game {
       //console.log(element.x, element.y)
       element.runLogic();
     }
-    this.removeObjects() ;
+    this.addScoreAndRemoveObjects() ;
     //this.createFallingObjects();
+    if (this.score < 0) {
+      this.gameOver();
+    }
 
   }
 
@@ -106,9 +137,11 @@ class Game {
   loop () {
     this.runLogic();
     this.draw();
-    setTimeout(() => {
-      this.loop();
-    }, 2500)
+    if (this.gameIsPlaying) {
+      setTimeout(() => {
+        this.loop();
+      }, 2500)
+    }
   }
 
 }
