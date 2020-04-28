@@ -47,11 +47,13 @@ class FallingObject {
     && (this.x + (this.width / 2)) <= (this.game.loo.x + this.game.loo.width)
     //centre of object >= left of loo
     && (this.x + (this.width / 2)) >= this.game.loo.x ) {
+      
       // win a point
       this.game.score++;
       console.log('you caught the poo!');
+      return true;
       //remove last element of object array
-      this.fallingObjects.pop();
+      //this.fallingObjects.pop();
     }
     
   }
@@ -62,8 +64,9 @@ class FallingObject {
       // lose a point
       this.game.score--;
       console.log('SPLAT!');
+      return true;
       //remove last element of object array
-      this.fallingObjects.pop();
+      //this.fallingObjects.pop();
       
     }
   }

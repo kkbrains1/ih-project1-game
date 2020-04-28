@@ -56,6 +56,22 @@ class Game {
     
   }
 
+  removeObjects() {
+    const ObjectArray = this.fallingObjects
+    for (let i = 0; i < ObjectArray.length - 1; i++) {
+      if (ObjectArray[i].checkCollisionLoo()) {
+        ObjectArray.splice(i, 1);
+        console.log(`${i} was spliced`);
+      }
+      if (ObjectArray[i].checkCollisionGround()) {
+        ObjectArray.splice(i, 1);
+        console.log(`${i} was spliced`);
+      }
+
+      
+    };
+  }
+
 
   clearScreen() {
     this.context.clearRect(0, 0, this.$canvas.width, this.$canvas.height);
@@ -67,6 +83,7 @@ class Game {
       //console.log(element.x, element.y)
       element.runLogic();
     }
+    this.removeObjects() ;
     //this.createFallingObjects();
 
   }
@@ -83,7 +100,6 @@ class Game {
     };
     //this.poos.draw();
     this.scoreBoard.draw();
-    
 
   }
 

@@ -49,7 +49,9 @@ speed up poo with timer
 *****ISSUES***********
 
 --increase the frequency of the loop without creating too many objects
---fix collision logic : .pop() not working or loop too slow? , objects are all hitting the ground even after they have been caught » after a 4-5 loops removed more objects from the array than exist in the game
+
+- poo2loo points counted double
+- once a poo hits the ground can no longer score + points (only -)
 
 
 
