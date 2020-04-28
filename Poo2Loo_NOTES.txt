@@ -1,0 +1,42 @@
+the Poo2loo game
+
+starting page
+- Objective : catch the poo in the loo
+- keys : left and right (up & down)
+( - avoid obstacles)
+
+- start button 
+
+IMAGES
+- img : static background for entire page
+- img : background (bonus - moving from top to bottom)
+- img : toilet
+- img : poo
+(bon - img : obstacles, e.g. loo roll)
+- img GAME OVER
+
+SOUNDS
+- theme music
+- poo2loo effect (fart?)
+poo2ground effect ()
+
+
+
+
+- collision poo with loo 
+- counter: collision poo with loo = +1 point
+- counter: collision poo with bottom of canvas = -1 point
+- game over when count === 0
+- timer ?
+
+
+
+--fonts
+--bootstrap ?
+
+speed up poo with timer
++ loo = slow down
+
+
+
+

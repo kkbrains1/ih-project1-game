@@ -1,0 +1,17 @@
+body {
+  font-style: Roboto, sans-serif;
+  font-size: 1.5em;
+  background-color: burlywood;
+  background: url(/images/background.jpg);
+  background-repeat: no-repeat; 
+  background-size: cover;
+  text-align: center;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+#start-button {
+  font-size: 25px;
+}
