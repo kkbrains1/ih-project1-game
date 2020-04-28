@@ -7,17 +7,18 @@ class Game {
     this.background = new Background(this);
     this.fallingObjects = [];
     this.loo = new Loo(this);
-
+    this.scoreBoard = new ScoreBoard(this);
   }
 
   start () {
-    this.createFallingObjects();
-
+    //this.createFallingObjects();
     // Loop
+    this.score = 0;
     this.loop();
   }
 
   setKeyBindings() {
+    //move left and right based on arrow keys
     window.addEventListener('keydown', (event) => {
       // Stop the default behavior (moving the screen to the left/up/right/down)
       event.preventDefault();
@@ -39,12 +40,14 @@ class Game {
 
 
   createFallingObjects() {
-    const fallingObject = new FallingObject(this, Math.floor(Math.random() * this.$canvas.width), 0);
-    for (let i = 0; i < fallingObject.length; i++) {
-      if (fallingObject[i-1].y - fallingObject[i].y > 50);
-    } this.fallingObjects.push(fallingObject);
+    // create array of falling objects
+    const fallingObject = new FallingObject(this, Math.floor(Math.random() * this.$canvas.width), 10);
+/*     for (let i = 0; i < fallingObject.length; i++) {
+      if (fallingObject[i-1].y - fallingObject[i].y > 100);
+    }  */
+    this.fallingObjects.push(fallingObject);
     //console.log(`new object x ${fallingObject.x} and y ${fallingObject.y}`);
-    console.log(this.fallingObjects);
+    //console.log(this.fallingObjects);
 /*     setTimeout(() => {
       
       this.createFallingObjects();
@@ -59,11 +62,13 @@ class Game {
   }
 
   runLogic() {
-     for (const element of this.fallingObjects) {
+    this.createFallingObjects();
+    for (const element of this.fallingObjects) {
       //console.log(element.x, element.y)
       element.runLogic();
     }
-    this.createFallingObjects();
+    //this.createFallingObjects();
+
   }
 
   draw() {
@@ -71,12 +76,13 @@ class Game {
 
     this.background.draw();
     //console.log(this.fallingObjects);
+    this.loo.draw();
     for (const element of this.fallingObjects) {
       //console.log(element);
       element.draw();
     };
     //this.poos.draw();
-    this.loo.draw();
+    this.scoreBoard.draw();
     
 
   }
@@ -86,7 +92,7 @@ class Game {
     this.draw();
     setTimeout(() => {
       this.loop();
-    }, 3000)
+    }, 2500)
   }
 
 }

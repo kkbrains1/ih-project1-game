@@ -1,0 +1,55 @@
+the Poo2loo game
+
+starting page
+- Objective : catch the poo in the loo
+- keys : left and right (up & down)
+( - avoid obstacles)
+
+- start button 
+
+IMAGES
+- img : static background for entire page
+- img : background (bonus - moving from top to bottom)
+- img : toilet
+- img : poo
+(bonus - img : obstacles, e.g. loo roll)
+- img GAME OVER ( + transition effects)
+
+SOUNDS
+- theme music
+- poo2loo effect (fart?)
+- poo2ground effect ()
+(- looroll2loo effect (flush?) )
+(looroll2ground effect)
+- gameover sound 
+
+
+
+
+
+- collision poo with loo 
+- counter: collision poo with loo = +1 point
+- counter: collision poo with bottom of canvas = -1 point
+- game over when count === 0
+- timer ?
+- reset
+(- pause)
+
+
+
+--fonts / other CSS
+--bootstrap ?
+
+****** first comments TA ***************
+ADD features:
+speed up poo with timer
++ loo roll = slow down 
+
+
+*****ISSUES***********
+
+--increase the frequency of the loop without creating too many objects
+--fix collision logic : .pop() not working or loop too slow? , objects are all hitting the ground even after they have been caught » after a 4-5 loops removed more objects from the array than exist in the game
+
+
+
