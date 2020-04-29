@@ -13,6 +13,7 @@ class Game {
     //this.createFallingObjects();
     // Loop
     this.gameIsPlaying = true;
+    
     //this.score = 0;
     this.loop();
   }
@@ -25,11 +26,13 @@ class Game {
     this.fallingObjects = [];
     this.loo = new Loo(this);
     this.score = 0;
-
+    //this.frames = 0;
   }
 
   gameOver() {
     this.gameIsPlaying = false;
+    this.gameOver = new GameOver(this);
+    this.gameOver.draw();
     setTimeout(() => {
       this.reset();
     }, 2000)
@@ -52,6 +55,11 @@ class Game {
           game.draw();
           //console.log('right');
           break;
+/*         case 39:
+          game.gameOver.closeWindow();
+          //game.draw();
+          //console.log('right');
+          break; */
       }
     });
   }
