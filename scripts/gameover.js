@@ -6,6 +6,7 @@ class GameOver {
     this.y = this.game.$canvas.height;
     this.backgroundImage = new Image();
     this.backgroundImage.src = '/images/game-over.jpg';
+    this.draw();
   }
 
 

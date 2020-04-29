@@ -1,5 +1,5 @@
 class FallingObject {
-  constructor (game, x, y) {
+  constructor (game, x, y, imgSrc) {
     this.game = game;
     this.context = this.game.context;
     this.x =  x// Math.floor(Math.random() * this.game.$canvas.width);
@@ -7,11 +7,13 @@ class FallingObject {
     //this.setRandomPosition();
     this.width = 50;
     this.height = 50;
-    this.speedY = 50;  
-    this.gravity = 1.2;
+    //this.speedY = 50;
+    this.speedY = 0.3;  
+    this.gravity = 0.01;
     this.objectImage = new Image();
-    this.objectImage.src = '/images/poo_scared.jpg';
-    this.fallingObjects = this.game.fallingObjects
+    this.objectImage.src = imgSrc //'/images/poo_scared.jpg';
+    this.fallingObjects = this.game.fallingObjects;
+    this.load();
   };
 
 /*   setRandomPosition() {
@@ -31,7 +33,9 @@ class FallingObject {
 
   runLogic () {
     this.y += this.speedY;
-    this.speedY *= this.gravity
+    console.log(this.y);
+    this.speedY += this.gravity;
+    console.log(`object.y = ${this.y}`);
     
     this.checkCollisionLoo();
     this.checkCollisionGround();
@@ -70,14 +74,22 @@ class FallingObject {
   }
 
 
-  draw() {
+  load() {
+    this.objectImage.addEventListener('load', () => {
+      this.context.drawImage(this.objectImage, this.x - (this.width / 2), this.y, this.width, this.height);
+      //console.log("OBJECT IMG LOADED");
+    })
+  }
+
   
+  draw() {
+    
+/*   this.objectImage.addEventListener('load', () => {
+    this.context.drawImage(this.objectImage, 50 , this.game.$canvas.height + 50, this.width, this.height);
+      //this.context.drawImage(this.backgroundImage, 0, 0, this.x, this.y);
+  }) */
   //this.context.save();
   // load img and draw once
-  this.objectImage.addEventListener('load', () => {
-    this.context.drawImage(this.objectImage, this.x - (this.width / 2), this.y, this.width, this.height);
-    //this.context.drawImage(this.backgroundImage, 0, 0, this.x, this.y);
-  })
   //draw img again once loaded
   this.context.drawImage(this.objectImage, this.x - (this.width / 2), this.y, this.width, this.height);
   //console.dir(this.objectImage);

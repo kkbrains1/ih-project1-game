@@ -7,14 +7,14 @@ class Game {
     this.background = new Background(this);
     this.scoreBoard = new ScoreBoard(this);
     this.reset();
+
+    this.creatingObjectsTimer = 0;
+    this.creatingObjectsInterval = 2500;
   }
   
-  start() {
-    //this.createFallingObjects();
-    // Loop
+  start() {     
     this.gameIsPlaying = true;
-    
-    //this.score = 0;
+    // Loop
     this.loop();
   }
   
@@ -25,17 +25,26 @@ class Game {
   reset() {
     this.fallingObjects = [];
     this.loo = new Loo(this);
-    this.score = 0;
+    //this.score = 0;
+    this.score = 10;
     //this.frames = 0;
   }
+
+/*   loadResourcesCheck() {
+    //this.fallingObjects.load();
+    if (this.background.load() && this.loo.load() && this.fallingObjects.load() ) {
+      console.log("images loaded");
+      return true;
+    }
+  } */
 
   gameOver() {
     this.gameIsPlaying = false;
     this.gameOver = new GameOver(this);
-    this.gameOver.draw();
-    setTimeout(() => {
+    //this.gameOver.draw();
+/*     setTimeout(() => {
       this.reset();
-    }, 2000)
+    }, 3000) */
   }
 
   setKeyBindings() {
@@ -65,13 +74,19 @@ class Game {
   }
 
 
-  createFallingObjects() {
+  createFallingObjects(timestamp) {
     // create array of falling objects
-    const fallingObject = new FallingObject(this, Math.floor(Math.random() * this.$canvas.width), 10);
+    const fallingObject = new FallingObject(this, Math.floor(Math.random() * this.$canvas.width), 0, '/images/poo_scared.jpg');
 /*     for (let i = 0; i < fallingObject.length; i++) {
       if (fallingObject[i-1].y - fallingObject[i].y > 100);
     }  */
-    this.fallingObjects.push(fallingObject);
+    if (this.creatingObjectsTimer < (timestamp - this.creatingObjectsInterval) ) {
+      console.log(`timestamp is ${timestamp}`)
+      console.log(`this.creatingObjectsTimer is ${this.creatingObjectsTimer}`)
+      this.creatingObjectsTimer = timestamp;
+      console.log(`this.creatingObjectsTimer is ${this.creatingObjectsTimer}`)
+      this.fallingObjects.push(fallingObject);
+    }
     //console.log(`new object x ${fallingObject.x} and y ${fallingObject.y}`);
     //console.log(this.fallingObjects);
 /*     setTimeout(() => {
@@ -113,18 +128,19 @@ class Game {
     this.context.clearRect(0, 0, this.$canvas.width, this.$canvas.height);
   }
 
-  runLogic() {
-    this.createFallingObjects();
+  runLogic(timestamp) {
+    this.createFallingObjects(timestamp);
     for (const element of this.fallingObjects) {
       //console.log(element.x, element.y)
       element.runLogic();
     }
     this.addScoreAndRemoveObjects() ;
     //this.createFallingObjects();
-    if (this.score < 0) {
+    if (this.score <= 0) {
       this.gameOver();
+      console.log('Game Over')
     }
-
+    //this.frames += 1;  
   }
 
   draw() {
@@ -137,19 +153,22 @@ class Game {
       //console.log(element);
       element.draw();
     };
-    //this.poos.draw();
+    //his.poos.draw();
     this.scoreBoard.draw();
 
   }
 
-  loop () {
-    this.runLogic();
-    this.draw();
+  loop(timestamp) {
+    this.runLogic(timestamp);
+    //console.log(`number of frames is ${this.frames}`);
+    //add condition images (+sdx) loaded true before drawing and looping
+    this.draw(); 
     if (this.gameIsPlaying) {
-      setTimeout(() => {
-        this.loop();
-      }, 2500)
-    }
+    window.requestAnimationFrame(timestamp => this.loop(timestamp)); 
+/*         setTimeout(() => {
+          this.loop();
+        }, 2500) */
+      }
   }
 
 }

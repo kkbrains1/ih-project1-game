@@ -8,7 +8,7 @@ class Loo {
     this.y = this.game.$canvas.height  - (this.height);
     this.looImage = new Image();
     this.looImage.src = '/images/loo.jpg';
-    
+    this.load();
   };
 
   moveRight() {
@@ -25,14 +25,17 @@ class Loo {
     //console.log('x and y' , this.x, this.y);
   }
 
+  load() {
+    this.looImage.addEventListener('load', () => {
+      this.context.drawImage(this.looImage, this.x - (this.width / 2), this.y, this.width, this.height);
+      //console.log("LOO IMG LOADED");      
+    })
+
+  }
 
   draw() {
     //context.save();
 
-    this.looImage.addEventListener('load', () => {
-      this.context.looImage(this.looImage, this.x - (this.width / 2), this.y, this.width, this.height);
-      //this.context.drawImage(this.backgroundImage, 0, 0, this.x, this.y);
-    })
 
     this.context.drawImage(this.looImage, this.x - (this.width / 2), this.y, this.width, this.height);
     //console.dir(this.looImage);

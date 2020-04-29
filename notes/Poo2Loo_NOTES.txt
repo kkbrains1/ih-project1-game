@@ -50,7 +50,7 @@ speed up poo with timer
 
 *****ISSUES***********
 
---increase the frequency of the loop without creating too many objects
+--increase the frequency of the loop without creating too many objects / crashing the game
 
 --tweak collision when poo has reached beyond top of loo but not yet hit the ground » not counted as caught
 
