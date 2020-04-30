@@ -55,12 +55,24 @@ speed up poo with timer
 
 *****ISSUES***********
 
---increase the frequency of the loop without creating too many objects / crashing the game
 
---tweak collision when poo has reached beyond top of loo but not yet hit the ground » not counted as caught
+
+
 
 --make sure GameOver when score <= 0 without affecting game start
 
+--collision roll with poo only updates when timer for roll hits array.push loop
+
+--add timer to speed up falling objects » reduce speed when roll is caught
+(--add super poo for 3 points)
+
+
+
+***Styling****
+
+--open page with instructions » open canvas when player clicks 'start'
+--font weight/style/size/colour for score
+--sound effects » objects caught / lost; game over
 --
 
 

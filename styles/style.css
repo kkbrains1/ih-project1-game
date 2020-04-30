@@ -53,10 +53,10 @@ p {
 }
 
 h1 {
-  color: brown;
-  text-shadow: 0px 0px 4px lightblue;
+  color: #675B89;
+  text-shadow: 0px 0px 4px #CC62AC;
   font-size: 3.5em; 
-  background-color: rgba(255, 0, 0, 0.2);
+  background-color: RGBA(84,223,244,0.36);
   border-radius: 1em;
   margin-bottom: 1em;
 }
