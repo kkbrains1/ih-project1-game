@@ -8,47 +8,55 @@
     <link rel="stylesheet" href="styles/style.css" />
     <title>Poo 2 Loo</title>
   </head>
-  <body>
+  <body id="page-background">
 
-    <h1>POO 2 LOO - THE GAME</h1>
+    <div >
 
-    <div class="game-intro">
-      <img src="./images/pooinloo.jfif" alt="poo 2 loo logo" class="poo2loo-img" />
-      <br />
-      <div >
-        <button class="button" id="start">START GAME</button>
-        <button class="button" id="pause">PAUSE GAME</button>
-        <button class="button" id="reset">RESET GAME</button>
+      <h1>POO 2 LOO - THE GAME</h1>
+
+  
+      <div class="game-intro">
+        <img src="./images/dancing-poos.gif" alt="poo 2 loo logo" class="poo2loo-img" />
+        <br />
+        <div id="buttons">
+          <button class="button" id="start">START GAME</button>
+          <button class="button" id="pause">PAUSE GAME</button>
+          <button class="button" id="reset">RESET GAME</button>
+        </div>
+        
       </div>
-      
+  
+  
+
+        <div id="game-canvas">
+          <canvas id="canvas" width="800" height="800"></canvas>
+          <div>
+            <img src="images/bathroom.jpg" alt="background" id="game-background" style="display: none;">
+          </div>
+        </div>
+    
+        <div id="objective" style="display: none;">
+          <h3>OBJECTIVE</h3>
+          
+          <p>MOVE THE LOO LEFT AND RIGHT WITH THE ARROW KEYS</p>
+          <img src="./images/loo.jpg"" alt="loo" class="img" width=160 />
+          <img src="./images/arrows.png" alt="arrow keys" class="arrows-img" />
+    
+          <p>CATCH ALL THE FALLING POOS! </p> 
+          <img src="./images/poo_scared.jpg"" alt="scared poo" class="img" />
+        </div>
+  
+  
+  
+      <script type="text/javascript" src="/scripts/background.js"></script>
+      <script type="text/javascript" src="/scripts/loo.js"></script>
+      <script type="text/javascript" src="/scripts/fallingobject.js"></script>
+      <script type="text/javascript" src="/scripts/scoreboard.js"></script>
+      <script type="text/javascript" src="scripts/gameover.js"></script>
+      <script type="text/javascript" src="/scripts/game.js"></script>
+      <script type="text/javascript" src="/scripts/main.js"></script>
     </div>
 
-    <div id="game-canvas">
-      <canvas id="canvas" width="800" height="800"></canvas>
-      <div>
-        <img src="images/bathroom.jpg" alt="background" id="game-background" style="display: none;">
-      </div>
-    </div>
-
-    <div>
-      <h3>OBJECTIVE</h3>
-      
-      <p>MOVE THE LOO LEFT AND RIGHT WITH THE ARROW KEYS</p>
-      <img src="./images/loo.jpg"" alt="loo" class="img" width=160 />
-      <img src="./images/arrows.png" alt="arrow keys" class="arrows-img" />
-
-      <p>CATCH ALL THE FALLING POOS! </p> 
-      <img src="./images/poo_scared.jpg"" alt="scared poo" class="img" />
-    </div>
-
-
-    <script type="text/javascript" src="/scripts/background.js"></script>
-    <script type="text/javascript" src="/scripts/loo.js"></script>
-    <script type="text/javascript" src="/scripts/fallingobject.js"></script>
-    <script type="text/javascript" src="/scripts/scoreboard.js"></script>
-    <script type="text/javascript" src="scripts/gameover.js"></script>
-    <script type="text/javascript" src="/scripts/game.js"></script>
-    <script type="text/javascript" src="/scripts/main.js"></script>
   </body>
 </html>
 

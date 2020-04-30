@@ -6,14 +6,19 @@ class Game {
     this.setKeyBindings();
     this.background = new Background(this);
     this.scoreBoard = new ScoreBoard(this);
-    this.reset();
+    
 
-    this.creatingObjectsTimer = 0;
-    this.creatingObjectsInterval = 2500;
+    //this.creatingPoosTimer = 0;
+    this.creatingPoosInterval = 2500;
+
+    //this.creatingRollsTimer = 0;
+    this.creatingRollsInterval = 11250;
+    this.reset();
   }
   
   start() {     
     this.gameIsPlaying = true;
+    this.background.backgroundMusic.play();
     // Loop
     this.loop();
   }
@@ -23,10 +28,13 @@ class Game {
   }
   
   reset() {
-    this.fallingObjects = [];
+    this.fallingPoos = [];
+    this.fallingRolls = [];
     this.loo = new Loo(this);
     //this.score = 0;
     this.score = 10;
+    this.creatingPoosTimer = 0;
+    this.creatingRollsTimer = 0;
     //this.frames = 0;
   }
 
@@ -74,18 +82,15 @@ class Game {
   }
 
 
-  createFallingObjects(timestamp) {
+  createFallingPoos(timestamp) {
     // create array of falling objects
-    const fallingObject = new FallingObject(this, Math.floor(Math.random() * this.$canvas.width), 0, '/images/poo_scared.jpg');
-/*     for (let i = 0; i < fallingObject.length; i++) {
-      if (fallingObject[i-1].y - fallingObject[i].y > 100);
-    }  */
-    if (this.creatingObjectsTimer < (timestamp - this.creatingObjectsInterval) ) {
-      console.log(`timestamp is ${timestamp}`)
-      console.log(`this.creatingObjectsTimer is ${this.creatingObjectsTimer}`)
-      this.creatingObjectsTimer = timestamp;
-      console.log(`this.creatingObjectsTimer is ${this.creatingObjectsTimer}`)
-      this.fallingObjects.push(fallingObject);
+    const fallingPoo = new FallingObject(this, Math.floor(Math.random() * this.$canvas.width), 0, 80, 80, '/images/poo_1.png');
+    if (this.creatingPoosTimer < (timestamp - this.creatingPoosInterval) ) {
+      //console.log(`timestamp is ${timestamp}`)
+      //console.log(`this.creatingPoosTimer is ${this.creatingPoosTimer}`)
+      this.creatingPoosTimer = timestamp;
+      console.log(`this.creatingPoosTimer is ${this.creatingPoosTimer}`)
+      this.fallingPoos.push(fallingPoo);
     }
     //console.log(`new object x ${fallingObject.x} and y ${fallingObject.y}`);
     //console.log(this.fallingObjects);
@@ -97,8 +102,21 @@ class Game {
     
   }
 
-  addScoreAndRemoveObjects() {
-    const ObjectArray = this.fallingObjects;
+  createFallingRolls(timestamp) {
+    // create array of falling objects
+    const fallingRoll = new FallingObject(this, Math.floor(Math.random() * this.$canvas.width), 0, 50, 50, '/images/TP.png');
+    if (this.creatingRollsTimer < (timestamp - this.creatingRollsInterval) ) {
+      //console.log(`timestamp is ${timestamp}`)
+      //console.log(`this.creatingRollsTimer is ${this.creatingRollsTimer}`)
+      this.creatingRollsTimer = timestamp;
+      console.log(`this.creatingRollsTimer is ${this.creatingRollsTimer}`)
+      this.fallingRolls.push(fallingRoll);
+    }
+    
+  }
+
+  addScoreAndRemovePoos() {
+    const ObjectArray = this.fallingPoos;
     
     for (let i = 0; i < ObjectArray.length - 1; i++) {
       const collidedLoo = ObjectArray[i].checkCollisionLoo();
@@ -123,19 +141,53 @@ class Game {
     };
   }
 
+  updateTimerAndRemoveRolls() {
+    const RollsArray = this.fallingRolls;
+    
+    for (let m = 0; m < RollsArray.length - 1; m++) {
+      const collidedLooRoll = RollsArray[m].checkCollisionLoo();
+      console.log(RollsArray[m].x, RollsArray[m].y);
+      if (collidedLooRoll) {
+        RollsArray.splice(m, 1);
+        // win a point
+        //this.score++;
+        console.log('you caught the roll! :-) ');
+        console.log(`m ${m} was removed`);
+      }
+    }
+    for (let n = 0; n < RollsArray.length - 1; n++) {
+      const collidedFloorRoll = RollsArray[n].checkCollisionGround();
+      console.log(RollsArray[n].x, RollsArray[n].y);
+      if (collidedFloorRoll) {
+        // lose a point
+        //this.score--;
+        RollsArray.splice(n, 1);
+        console.log('awwww! roll hit the ground :-( ');
+        console.log(`m ${n} was removed`);
+      }
+      
+    };
+  }
 
   clearScreen() {
     this.context.clearRect(0, 0, this.$canvas.width, this.$canvas.height);
   }
 
   runLogic(timestamp) {
-    this.createFallingObjects(timestamp);
-    for (const element of this.fallingObjects) {
+    this.createFallingPoos(timestamp);
+    for (const element of this.fallingPoos) {
       //console.log(element.x, element.y)
       element.runLogic();
     }
-    this.addScoreAndRemoveObjects() ;
-    //this.createFallingObjects();
+    this.addScoreAndRemovePoos() ;
+
+    this.createFallingRolls(timestamp);
+    for (const element of this.fallingRolls) {
+      //console.log(element.x, element.y)
+      element.runLogic();
+    }
+    this.updateTimerAndRemoveRolls();
+    
     if (this.score <= 0) {
       this.gameOver();
       console.log('Game Over')
@@ -149,7 +201,11 @@ class Game {
     this.background.draw();
     //console.log(this.fallingObjects);
     this.loo.draw();
-    for (const element of this.fallingObjects) {
+    for (const element of this.fallingPoos) {
+      //console.log(element);
+      element.draw();
+    };
+    for (const element of this.fallingRolls) {
       //console.log(element);
       element.draw();
     };

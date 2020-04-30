@@ -1,18 +1,17 @@
 class FallingObject {
-  constructor (game, x, y, imgSrc) {
+  constructor (game, x, y, w, h, imgSrc) {
     this.game = game;
     this.context = this.game.context;
     this.x =  x// Math.floor(Math.random() * this.game.$canvas.width);
     this.y =  y;
     //this.setRandomPosition();
-    this.width = 50;
-    this.height = 50;
-    //this.speedY = 50;
+    this.width = w //50;
+    this.height = h //50;
     this.speedY = 0.3;  
     this.gravity = 0.01;
     this.objectImage = new Image();
     this.objectImage.src = imgSrc //'/images/poo_scared.jpg';
-    this.fallingObjects = this.game.fallingObjects;
+    //this.fallingObjects = this.game.fallingObjects;
     this.load();
   };
 
@@ -33,9 +32,9 @@ class FallingObject {
 
   runLogic () {
     this.y += this.speedY;
-    console.log(this.y);
+    //console.log(this.y);
     this.speedY += this.gravity;
-    console.log(`object.y = ${this.y}`);
+    //console.log(`object.y = ${this.y}`);
     
     this.checkCollisionLoo();
     this.checkCollisionGround();
@@ -59,6 +58,8 @@ class FallingObject {
     }
     
   }
+
+
 
   checkCollisionGround() {
     //botttom of object hits the ground
