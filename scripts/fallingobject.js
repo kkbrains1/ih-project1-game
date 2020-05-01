@@ -1,5 +1,5 @@
 class FallingObject {
-  constructor (game, x, y, w, h, s, imgSrc) {
+  constructor (game, x, y, w, h, s, g, imgSrc) {
     this.game = game;
     this.context = this.game.context;
     this.x =  x;
@@ -7,10 +7,15 @@ class FallingObject {
     this.width = w;
     this.height = h;
     this.speedY = s;  
-    this.gravity = 0.0;
+    this.gravity = g;
     this.objectImage = new Image();
     this.objectImage.src = imgSrc
     this.load();
+/*     this.objectSound = new Audio();
+    this.objectSound.src ='/sounds/186344__estupe__wc-chain.wav'
+    this.objectSound.volume = 0.5;
+    this.objectSound.load(); */
+    
   };
 
 
@@ -19,7 +24,11 @@ class FallingObject {
     this.checkCollisionGround();  
     this.y += this.speedY;
     //console.log(this.y);
-    this.speedY += this.gravity;
+    
+    if (this.game.elapsedTime >= 8000) {
+      this.speedY += this.gravity;
+      //console.log(this.speedY);
+    }
     //console.log(`object.y = ${this.y}`);
   }
 
@@ -32,6 +41,7 @@ class FallingObject {
     && (this.x ) <= (this.game.loo.x + this.game.loo.width)
     //right of object >= left of loo
     && (this.x + this.width) >= this.game.loo.x ) {
+      //this.objectSound.play();
       return true;
     }    
   }

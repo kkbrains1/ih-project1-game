@@ -12,8 +12,10 @@
   <body id="page-background">
 
     <div >
-
-      <h1>POO 2 LOO - THE GAME</h1>
+      <header>
+        <h1>POO 2 LOO - THE GAME</h1>
+        <a href="https://blogs.unicef.org/blog/one-billion-people-still-cant-take-poo-to-the-loo/">Visit the UNICEF page to find out more about the campaign to end open defecation in India</a>
+      </header>
 
   
       <div class="game-intro">
@@ -29,21 +31,35 @@
   
   
 
-        <div id="game-canvas">
-          <canvas id="canvas" width="800" height="800"></canvas>
+        <div class="game area">
+          <section id="objective" style="display: block";>
+            <h3>OBJECTIVE</h3>
+            
+            <p>MOVE THE LOO LEFT AND RIGHT WITH THE ARROW KEYS</p>
+            <img src="./images/disco-loo.gif"" alt="disco loo" class="img" width=160 />
+            <br />
+            <img src="./images/arrowKeys.png" alt="arrow keys" class="arrows-img" />
+      
+            <p> CATCH ALL THE FALLING <img src="./images/poo_1.png"" alt="poo" class="img"  width="200"/> TO SCORE POINTS! </p> 
+            
+            <p> CATCHING THE <img src="./images/TP.png"" alt="LOO ROLL" class="img" width="100" /> WILL MAKE IT EASIER FOR YOU... </p> 
+            
+          </section>
+
+          <section id="game-canvas" style="display: none;">
+
+            <canvas id="canvas" width="800" height="800"></canvas>
+          </section>
+
+          <section id="game-over" style="display: none;">
+            <button class="button" id="replay">PLAY AGAIN</button>
+            <br />
+            <img src="/images/game-over-improved.gif" alt="game over" width=1000 />
+            
+          </section>
 
         </div>
     
-        <div id="objective" style="display: none;">
-          <h3>OBJECTIVE</h3>
-          
-          <p>MOVE THE LOO LEFT AND RIGHT WITH THE ARROW KEYS</p>
-          <img src="./images/disco-loo.gif"" alt="loo" class="img" width=160 />
-          <img src="./images/arrows.png" alt="arrow keys" class="arrows-img" />
-    
-          <p>CATCH ALL THE FALLING POOS! </p> 
-          <img src="./images/poo_1.png"" alt="poo" class="img" />
-        </div>
   
   
   

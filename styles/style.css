@@ -1,8 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-style: Roboto, sans-serif;
-  font-size: 1.5em;
-  background-color: burlywood;
   
+  background-color: burlywood;
+  font-size: 2em;
   text-align: center;
   padding-bottom: 3em;
 }
@@ -17,14 +21,14 @@ body {
 
 .arrows-img {
   width: 150px;
-  margin-bottom: 75px;
+  margin-bottom: 1em;
 }
 
 .button {
   height: 80px;
   box-shadow: 2px 2px 5px #000; 
   padding: 18px;
-  margin: 0 auto;
+  margin: 0.5em auto;
   font-size: 25px;
 }
 
@@ -44,20 +48,43 @@ body {
   background-color: #54DFF4;
 }
 
-h3, 
-p {
-  font-weight: 700;
-  color: white;
-  text-align: center;
-  margin-bottom: 8px;
+#replay {
+  background-color: #e7ff00;
 }
 
-h1 {
-  color: #675B89;
-  text-shadow: 0px 0px 4px #CC62AC;
-  font-size: 3.5em; 
+#objective {
+  font-weight: 700;
+  color: #3f3167;
+  text-shadow: 2px 1px 4px #CC62AC;
+  text-align: center;
+  background-color: RGBA(84,223,244,0.3);
+  border-radius: 1em;
+  display: block;
+  padding: 1em;
+  margin: 1em 10em;
+}
+
+h3 {
+  font-size: 2em;
+  
+}
+
+header {
+  color: #3f3167;
+  text-shadow: 6px 1px 4px #CC62AC;
   background-color: RGBA(84,223,244,0.36);
   border-radius: 1em;
   margin-bottom: 1em;
+}
+
+h1 {  
+  font-size: 3em; 
+  padding-bottom: 0em;
+}
+  
+
+
+P {
+  padding-bottom: 1em;
 }
 

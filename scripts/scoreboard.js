@@ -8,7 +8,8 @@ class ScoreBoard {
   }
 
   draw() {
-    this.context.font = '24px bold sans-serif';
-    this.context.fillText(`POINTS: ${this.game.score}`, this.x, this.y , this.maxWidth);
+    this.context.fillStyle = 'pink';
+    this.context.font = '40px bold Roboto, sans-serif';
+    this.context.fillText(`YOUR POINTS: ${this.game.score}`, this.x, this.y + 10, this.maxWidth);
   }
 }
