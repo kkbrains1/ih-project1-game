@@ -10,7 +10,7 @@ class Background {
     this.load();
     
     this.backgroundMusic = new Audio();
-    this.backgroundMusic.src = '/sounds/Poo-2-Loo-trimmed.mp3';
+    this.backgroundMusic.src = '/sounds/Poo-2-Loo-trimmed-gc.mp3';
     this.backgroundMusic.volume = 0.1;
     this.backgroundMusic.load();
 
