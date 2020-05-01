@@ -38,9 +38,9 @@ class Loo {
 
 
     this.context.drawImage(this.looImage, this.x - (this.width / 2), this.y, this.width, this.height);
-    this.context.beginPath();
+/*     this.context.beginPath();
     this.context.rect(this.x - (this.width / 2), this.y, this.width, this.height);
-    this.context.stroke();
+    this.context.stroke(); */
     //console.dir(this.looImage);
     
     //context.restore();

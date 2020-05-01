@@ -66,9 +66,9 @@ class FallingObject {
   // load img and draw once
   //draw img again once loaded
   this.context.drawImage(this.objectImage, this.x - (this.width / 2), this.y, this.width, this.height);
-  this.context.beginPath();
+/*   this.context.beginPath();
   this.context.rect(this.x - (this.width / 2), this.y, this.width, this.height);
-  this.context.stroke();
+  this.context.stroke(); */
   //console.dir(this.objectImage);
 
   //this.context.restore();
